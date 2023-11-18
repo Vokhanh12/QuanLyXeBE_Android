@@ -3,9 +3,7 @@ package com.example.repositories.inMemory
 import com.example.entities.Order
 import com.example.repositories.interfaces.IOrderRepository
 import org.jetbrains.exposed.dao.id.IntIdTable
-import org.jetbrains.exposed.sql.ResultRow
-import org.jetbrains.exposed.sql.select
-import org.jetbrains.exposed.sql.selectAll
+import org.jetbrains.exposed.sql.*
 import org.jetbrains.exposed.sql.transactions.transaction
 
 object Orders : IntIdTable() {
@@ -20,9 +18,20 @@ class OrderRepository : BaseRepository<Order>() , IOrderRepository {
         }
     }
 
+
     override suspend fun findById(id: String): Order? {
         return transaction {
             Orders.select { Orders.id eq id.toInt() }.singleOrNull()?.let { rowToOrder(it) }
+        }
+    }
+
+    override suspend fun insert(entity: Order) {
+        transaction {
+            val id = Orders
+                .insertAndGetId {
+                    it[name] = entity.name
+                }
+            entity.id = id.value.toString()
         }
     }
 

@@ -2,7 +2,6 @@ package com.example.commands
 
 import com.example.entities.Order
 import java.util.*
-
 fun CreateOrderCommand.toEntity() : Order {
     val uniqueID = UUID.randomUUID().toString()
     val order = Order(uniqueID)

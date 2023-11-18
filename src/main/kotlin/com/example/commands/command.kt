@@ -4,3 +4,5 @@ data class DeleteOrderCommand (val orderId : String)
 class GetAllOrdersCommand
 data class GetOrderByIdCommand(val orderId : String)
 data class UpdateOrderCommand (val orderId : String, val name : String)
+
+class GetAllStudentCommand
