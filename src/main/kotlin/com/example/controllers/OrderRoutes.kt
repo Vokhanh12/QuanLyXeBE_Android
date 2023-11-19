@@ -59,7 +59,7 @@ fun Route.addOrderRoutes () {
 
             val dto = call.receive<UpdateOrderDto>()
             val command = UpdateOrderCommand(id!!, dto.name)
-            var order = service.updateOrder(command)
+            val order = service.updateOrder(command)
 
             if(order == null) {
                 call.respond(HttpStatusCode.NotFound)

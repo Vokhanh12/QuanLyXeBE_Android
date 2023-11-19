@@ -4,6 +4,7 @@ import com.example.entities.Order
 import com.example.repositories.interfaces.IOrderRepository
 import org.jetbrains.exposed.dao.id.IntIdTable
 import org.jetbrains.exposed.sql.*
+import org.jetbrains.exposed.sql.SqlExpressionBuilder.eq
 import org.jetbrains.exposed.sql.transactions.transaction
 
 object Orders : IntIdTable() {
@@ -34,6 +35,13 @@ class OrderRepository : BaseRepository<Order>() , IOrderRepository {
             entity.id = id.value.toString()
         }
     }
+
+    override suspend fun delete(id: String) {
+        transaction {
+            Orders.deleteWhere { Orders.id eq id.toInt() }
+        }
+    }
+
 
     private fun rowToOrder(row: ResultRow): Order {
         return Order(row[Orders.id].value.toString()).apply {
