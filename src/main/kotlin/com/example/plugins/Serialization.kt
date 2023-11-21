@@ -2,6 +2,7 @@ package com.example.plugins
 
 import com.example.controllers.addOrderRoutes
 import com.example.controllers.addStudentRoutes
+import com.example.controllers.addVehicleRoutes
 import io.ktor.serialization.kotlinx.json.*
 import io.ktor.server.application.*
 import io.ktor.server.plugins.contentnegotiation.*
@@ -19,6 +20,7 @@ fun Application.configureSerialization() {
     }
     routing {
 
+        addVehicleRoutes()
         addOrderRoutes()
         addStudentRoutes()
 

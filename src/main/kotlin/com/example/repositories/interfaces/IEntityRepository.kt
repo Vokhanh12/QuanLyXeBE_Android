@@ -2,6 +2,7 @@ package com.example.repositories.interfaces
 
 import com.example.entities.Order
 import com.example.entities.Student
+import com.example.entities.Vehicle
 
 interface IEntityRepository<TEntity>{
     suspend fun getAll() : List<TEntity>
@@ -12,5 +13,6 @@ interface IEntityRepository<TEntity>{
     suspend fun replace(item : TEntity)
 }
 
-interface IOrderRepository : IEntityRepository<Order>
-interface IStudentRepository : IEntityRepository<Student>
+interface IOrderRepository: IEntityRepository<Order>
+interface IStudentRepository: IEntityRepository<Student>
+interface IVehicleRepository: IEntityRepository<Vehicle>

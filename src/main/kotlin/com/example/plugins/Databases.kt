@@ -10,7 +10,7 @@ import com.microsoft.sqlserver.jdbc.SQLServerDriver;
 
 fun Application.configureDatabases() {
     val database = Database.connect(
-            url = "jdbc:sqlserver://localhost:15432;databaseName=testuser1",
+            url = "jdbc:sqlserver://localhost:15432;databaseName=qlqtct",
             driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver",
             user = "sa",
             password = "Aa@123456789"

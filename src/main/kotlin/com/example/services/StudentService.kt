@@ -9,20 +9,21 @@ class StudentService(private val studentRepository: StudentRepository) : IStuden
         return studentRepository.getAll()
     }
 
-    override suspend fun getOrderById(command: GetOrderByIdCommand): Student? {
+    override suspend fun getStudentById(command: GetOrderByIdCommand): Student? {
         TODO("Not yet implemented")
     }
 
-    override suspend fun createOrder(command: CreateOrderCommand): Student {
+    override suspend fun createStudent(command: CreateOrderCommand): Student {
         TODO("Not yet implemented")
     }
 
-    override suspend fun updateOrder(command: UpdateOrderCommand): Student? {
+    override suspend fun updateStudent(command: UpdateOrderCommand): Student? {
         TODO("Not yet implemented")
     }
 
-    override suspend fun deleteOrder(command: DeleteOrderCommand) {
+    override suspend fun deleteStudent(command: DeleteOrderCommand) {
         TODO("Not yet implemented")
     }
+
 
 }
