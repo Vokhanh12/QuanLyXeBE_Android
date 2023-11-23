@@ -35,7 +35,7 @@ class VehicleRepository: BaseRepository<Vehicle>(), IVehicleRepository{
             vehicle_name = row[Vehicles.vehicle_name]
             vehicle_type = row[Vehicles.vehicle_type]
             start_year_of_use = row[Vehicles.start_year_of_use]
-            url_image = row[Vehicles.url_image]
+            url_image = BASE_URL + row[Vehicles.url_image]
         }
 
     }

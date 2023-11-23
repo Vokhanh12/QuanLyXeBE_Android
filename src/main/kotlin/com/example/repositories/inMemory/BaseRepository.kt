@@ -4,6 +4,11 @@ import com.example.entities.Entity
 import com.example.repositories.interfaces.IEntityRepository
 
 open class BaseRepository<TEntity> : IEntityRepository<TEntity> where TEntity : Entity {
+
+    companion object{
+        final val BASE_URL = "http://192.168.1.5:8080"
+    }
+
     private var entities = mutableListOf<TEntity>()
 
     override suspend fun getAll(): List<TEntity> {
