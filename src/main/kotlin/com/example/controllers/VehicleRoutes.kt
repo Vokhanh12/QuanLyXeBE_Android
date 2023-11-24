@@ -1,6 +1,5 @@
 package com.example.controllers
 
-import com.example.commands.GetAllOrdersCommand
 import com.example.commands.GetAllVehicleCommand
 import com.example.dtos.extensions.toDto
 import com.example.repositories.inMemory.VehicleRepository

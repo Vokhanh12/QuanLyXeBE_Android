@@ -6,11 +6,10 @@ import io.ktor.server.request.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
 import org.jetbrains.exposed.sql.*
-import com.microsoft.sqlserver.jdbc.SQLServerDriver;
 
 fun Application.configureDatabases() {
     val database = Database.connect(
-            url = "jdbc:sqlserver://localhost:15432;databaseName=qlqtct",
+            url = "jdbc:sqlserver://localhost:15432;databaseName=qlxe",
             driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver",
             user = "sa",
             password = "Aa@123456789"

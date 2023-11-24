@@ -6,7 +6,7 @@ import com.example.repositories.interfaces.IEntityRepository
 open class BaseRepository<TEntity> : IEntityRepository<TEntity> where TEntity : Entity {
 
     companion object{
-        final val BASE_URL = "http://192.168.1.5:8080"
+        final val BASE_URL = "http://192.168.1.7:8080"
     }
 
     private var entities = mutableListOf<TEntity>()
