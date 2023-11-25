@@ -13,5 +13,11 @@ class GetAllStudentCommand
 
 
 // Command Vehicle
-
 class GetAllVehicleCommand
+data class CreateVehicleCommand(
+    val code: String,
+    val name: String,
+    val type: String,
+    val startYearOfUse: String,
+    val urlImage: String
+)
