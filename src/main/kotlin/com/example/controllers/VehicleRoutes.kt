@@ -1,7 +1,9 @@
 package com.example.controllers
 
 import com.example.commands.CreateVehicleCommand
+import com.example.commands.DeleteVehicleCommand
 import com.example.commands.GetAllVehicleCommand
+import com.example.commands.GetVehicleByIdCommand
 import com.example.dtos.extensions.toDto
 import com.example.dtos.requests.CreateVehicleDto
 import com.example.repositories.inMemory.VehicleRepository
@@ -24,13 +26,52 @@ fun Route.addVehicleRoutes(){
             call.respond(vehicleDto)
         }
 
+        get("{id}"){
+
+            val id = call.parameters["id"]
+
+            if(id == null)
+                call.respond(HttpStatusCode.BadRequest)
+
+            val command = GetVehicleByIdCommand(id!!)
+
+            val vehicle = vehicleService.getVehicleById(command)
+
+            if(vehicle == null)
+                call.respond(HttpStatusCode.NotFound)
+
+            val vehicleDto = vehicle!!.toDto()
+            call.respond(vehicleDto)
+
+        }
+
         post {
             val dto = call.receive<CreateVehicleDto>()
-            val command = CreateVehicleCommand(dto.code, dto.name, dto.type, dto.start_year_of_use,dto.url_image)
+            val command = CreateVehicleCommand(dto.code, dto.name, dto.type, dto.startYearOfUse,dto.urlImage)
             val vehicle = vehicleService.createVehicle(command)
-            val orderDto = vehicle.toDto()
+            val vehicleDto = vehicle.toDto()
 
-            call.respond(HttpStatusCode.Created, orderDto)
+            call.respond(HttpStatusCode.Created, vehicleDto)
+        }
+
+        delete("{id}") {
+            val id = call.parameters["id"]
+
+            if(id == null)
+                call.respond(HttpStatusCode.BadRequest)
+
+            val command = GetVehicleByIdCommand(id!!)
+
+            val vehicle = vehicleService.getVehicleById(command)
+
+            if(vehicle == null)
+                call.respond(HttpStatusCode.NotFound)
+
+            val deleteCommand = DeleteVehicleCommand(id)
+
+            vehicleService.deleteVehicle(deleteCommand)
+            call.respond(HttpStatusCode.NoContent)
+
         }
 
     }

@@ -21,3 +21,5 @@ data class CreateVehicleCommand(
     val startYearOfUse: String,
     val urlImage: String
 )
+data class GetVehicleByIdCommand(val vehicleId: String)
+data class DeleteVehicleCommand(val vehicleId: String)

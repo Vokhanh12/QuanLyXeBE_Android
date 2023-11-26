@@ -3,8 +3,8 @@ package com.example.repositories.inMemory
 import com.example.entities.Vehicle
 import com.example.repositories.interfaces.IVehicleRepository
 import org.jetbrains.exposed.dao.id.IntIdTable
-import org.jetbrains.exposed.sql.ResultRow
-import org.jetbrains.exposed.sql.selectAll
+import org.jetbrains.exposed.sql.*
+import org.jetbrains.exposed.sql.SqlExpressionBuilder.eq
 import org.jetbrains.exposed.sql.transactions.transaction
 
 object Vehicles: IntIdTable(){
@@ -23,6 +23,31 @@ class VehicleRepository: BaseRepository<Vehicle>(), IVehicleRepository{
     override suspend fun getAll(): List<Vehicle> {
         return transaction {
             Vehicles.selectAll().map { rowToVehicle(it)}
+        }
+    }
+
+    override suspend fun insert(entity: Vehicle) {
+        transaction {
+            val id = Vehicles
+                .insertAndGetId {
+                    it[code] = entity.code
+                    it[name] = entity.name
+                    it[type] = entity.type
+                    it[start_year_of_use] = entity.start_year_of_use
+                    it[url_image] = entity.url_image
+                }
+            entity.id = id.value.toString()
+        }
+    }
+
+    override suspend fun delete(id: String) {
+        transaction {
+            Vehicles.deleteWhere { Vehicles.id eq id.toInt() }
+        }
+    }
+    override suspend fun findById(id: String): Vehicle? {
+        return transaction {
+            Vehicles.select { Vehicles.id eq id.toInt() }.singleOrNull()?.let { rowToVehicle(it) }
         }
     }
 
