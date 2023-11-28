@@ -1,13 +1,9 @@
 package com.example.repositories.inMemory
 
-import com.example.entities.Order
 import com.example.entities.Student
-import com.example.repositories.interfaces.IOrderRepository
 import com.example.repositories.interfaces.IStudentRepository
 import org.jetbrains.exposed.dao.id.IntIdTable
 import org.jetbrains.exposed.sql.ResultRow
-import org.jetbrains.exposed.sql.SqlExpressionBuilder.eq
-import org.jetbrains.exposed.sql.select
 import org.jetbrains.exposed.sql.selectAll
 import org.jetbrains.exposed.sql.transactions.transaction
 

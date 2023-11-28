@@ -19,3 +19,9 @@ class Vehicle(id: String) : Entity(id){
     var start_year_of_use: String = ""
     var url_image: String = ""
 }
+
+class Account(id: String): Entity(id){
+    var username: String = ""
+    var password: String = ""
+    var type: String = ""
+}

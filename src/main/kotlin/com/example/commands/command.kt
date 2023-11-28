@@ -23,3 +23,7 @@ data class CreateVehicleCommand(
 )
 data class GetVehicleByIdCommand(val vehicleId: String)
 data class DeleteVehicleCommand(val vehicleId: String)
+
+// command Account
+
+data class GetAccountByUsernameAndPasswordCommand(val username: String, val password: String)
