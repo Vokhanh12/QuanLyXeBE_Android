@@ -16,7 +16,7 @@ interface IEntityRepository<TEntity>{
 }
 
 interface ILoginRepository<TEntity>{
-    suspend fun findByUsernameAndPassword(username: String, password: String): Boolean
+    suspend fun getTypeByUsernameAndPassword(username: String, password: String): String?
 }
 
 interface IOrderRepository: IEntityRepository<Order>

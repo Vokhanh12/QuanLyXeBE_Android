@@ -16,12 +16,14 @@ object Accounts: IntIdTable(){
 }
 
 class AccountRepository: BaseRepository<Account>(), IAccountRepository{
-    override suspend fun findByUsernameAndPassword(username: String, password: String): Boolean {
+    override suspend fun getTypeByUsernameAndPassword(username: String, password: String): String? {
 
        return transaction {
-            Accounts.select{
+           val result = Accounts.select{
                 Accounts.username eq username and (Accounts.password eq password)
-            }.count() > 0
+            }.singleOrNull()
+
+           result?.get(Accounts.type)
         }
 
     }

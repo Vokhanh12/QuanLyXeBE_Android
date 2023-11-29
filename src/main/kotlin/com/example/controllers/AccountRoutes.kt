@@ -21,12 +21,12 @@ fun Route.addAccountRoutes (){
             val dto = call.receive<LoginAccountDto>()
             val command = GetAccountByUsernameAndPasswordCommand(dto.username, dto.password)
 
-            val isAuthenticated = serviceAccount.loginAccount(command)
+            val type = serviceAccount.loginAccount(command)
 
-            if (isAuthenticated) {
-                call.respond(HttpStatusCode.OK, "Login successful")
+            if (type != null) {
+                call.respond(HttpStatusCode.OK, mapOf("type" to type))
             } else {
-                call.respond(HttpStatusCode.Unauthorized, "Login failed")
+                call.respond(HttpStatusCode.Unauthorized, "Invalid credentials")
             }
 
 
