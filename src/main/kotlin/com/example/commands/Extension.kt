@@ -24,17 +24,13 @@ fun UpdateOrderCommand.updateEntity(order: Order) : Order {
 
 // Vehicle
 
-fun CreateVehicleCommand.toEntity(): Vehicle{
+fun CreateVehicleCommand.toEntity(): Vehicle {
+    val vehicle = Vehicle(this.id) // Sử dụng id đã có thay vì tạo mới UUID
 
-    val uniqueID = UUID.randomUUID().toString()
-    val vehicle = Vehicle(uniqueID)
-
-    vehicle.code = this.code
     vehicle.name = this.name
     vehicle.type = this.type
     vehicle.start_year_of_use = this.startYearOfUse
     vehicle.url_image = this.urlImage
 
     return vehicle
-
 }

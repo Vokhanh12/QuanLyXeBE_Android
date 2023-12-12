@@ -1,9 +1,6 @@
 package com.example.plugins
 
-import com.example.controllers.addAccountRoutes
-import com.example.controllers.addOrderRoutes
-import com.example.controllers.addStudentRoutes
-import com.example.controllers.addVehicleRoutes
+import com.example.controllers.*
 import io.ktor.serialization.kotlinx.json.*
 import io.ktor.server.application.*
 import io.ktor.server.plugins.contentnegotiation.*
@@ -21,6 +18,7 @@ fun Application.configureSerialization() {
     }
     routing {
 
+        addUploadImageRoutes()
         addAccountRoutes()
         addVehicleRoutes()
         addOrderRoutes()

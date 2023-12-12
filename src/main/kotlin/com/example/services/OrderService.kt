@@ -2,7 +2,8 @@ package com.example.services
 
 import com.example.commands.*
 import com.example.entities.Order
-import com.example.repositories.interfaces.*
+import com.example.repositories.interfaces.IOrderRepository
+
 class OrderService(private val orderRepository: IOrderRepository) : IOrderService {
 
 

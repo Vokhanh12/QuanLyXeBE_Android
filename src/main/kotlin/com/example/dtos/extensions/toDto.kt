@@ -17,7 +17,7 @@ fun Student.toDto() : StudentDto{
 }
 
 fun Vehicle.toDto() : VehicleDto{
-    return VehicleDto(this.id, this.code, this.name, this.type, this.start_year_of_use, this.url_image)
+    return VehicleDto(this.id, this.name, this.type, this.start_year_of_use, this.status, this.url_image)
 }
 
 fun Account.toDto(): AccountDto{

@@ -18,7 +18,6 @@ interface IEntityRepository<TEntity>{
 interface ILoginRepository<TEntity>{
     suspend fun getTypeByUsernameAndPassword(username: String, password: String): String?
 }
-
 interface IOrderRepository: IEntityRepository<Order>
 interface IStudentRepository: IEntityRepository<Student>
 interface IVehicleRepository: IEntityRepository<Vehicle>

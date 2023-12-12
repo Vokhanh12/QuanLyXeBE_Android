@@ -13,10 +13,10 @@ class Student(id : String) : Entity(id)
 }
 
 class Vehicle(id: String) : Entity(id){
-    var code: String = ""
     var name: String = ""
     var type: String = ""
     var start_year_of_use: String = ""
+    var status: String = ""
     var url_image: String = ""
 }
 
@@ -25,3 +25,5 @@ class Account(id: String): Entity(id){
     var password: String = ""
     var type: String = ""
 }
+
+

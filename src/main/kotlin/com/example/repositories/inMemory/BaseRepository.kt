@@ -3,10 +3,10 @@ package com.example.repositories.inMemory
 import com.example.entities.Entity
 import com.example.repositories.interfaces.IEntityRepository
 
-open class BaseRepository<TEntity> : IEntityRepository<TEntity> where TEntity : Entity {
+open class BaseRepository<TEntity : Entity>() : IEntityRepository<TEntity> {
 
     companion object{
-        final val BASE_URL = "http://192.168.0.113:8080"
+        final val BASE_URL = "http://192.168.1.13:8080"
     }
 
     private var entities = mutableListOf<TEntity>()
@@ -37,4 +37,12 @@ open class BaseRepository<TEntity> : IEntityRepository<TEntity> where TEntity : 
     override suspend fun insert(entity: TEntity) {
         entities.add(entity)
     }
+
+
+
+
+
+
+    // Thêm các phương thức truy vấn dữ liệu thông qua foreign key khác nếu cần
 }
+
