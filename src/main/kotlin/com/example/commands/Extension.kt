@@ -1,5 +1,6 @@
 package com.example.commands
 
+import com.example.entities.DriverDetail
 import com.example.entities.Order
 import com.example.entities.Vehicle
 import java.util.*
@@ -33,4 +34,15 @@ fun CreateVehicleCommand.toEntity(): Vehicle {
     vehicle.url_image = this.urlImage
 
     return vehicle
+}
+
+// DriverDetail
+fun CreateDriverDetailCommand.toEnity(): DriverDetail{
+    val uniqueID = UUID.randomUUID().toString()
+    val driverDetail = DriverDetail(uniqueID, this.routeId, this.driverId, this.vehicleId)
+
+    driverDetail.startTime = this.startTime
+    driverDetail.endTime = this.endTime
+
+    return  driverDetail
 }

@@ -26,4 +26,10 @@ class Account(id: String): Entity(id){
     var type: String = ""
 }
 
+class Driver(id: String): Entity(id){
+    var name: String = ""
+    var number_phone = ""
+    var address = ""
+}
+
 

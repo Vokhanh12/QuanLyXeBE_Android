@@ -16,6 +16,7 @@ object Vehicles: StringIdTable(){
     val status = varchar("status", length = 5)
     val url_image = varchar("url_image",100)
 
+
 }
 
 
@@ -53,7 +54,7 @@ class VehicleRepository() : BaseRepository<Vehicle>(), IVehicleRepository{
     }
 
     private fun rowToVehicle(row: ResultRow): Vehicle{
-        return Vehicle(row[Vehicles.id].value.toString()).apply {
+        return Vehicle(row[Vehicles.id].value).apply {
             name = row[Vehicles.name]
             type = row[Vehicles.type]
             start_year_of_use = row[Vehicles.start_year_of_use]

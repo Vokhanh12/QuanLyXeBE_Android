@@ -1,12 +1,6 @@
 package com.example.dtos.extensions
-import com.example.dtos.responses.AccountDto
-import com.example.dtos.responses.OrderDto
-import com.example.dtos.responses.StudentDto
-import com.example.dtos.responses.VehicleDto
-import com.example.entities.Account
-import com.example.entities.Order
-import com.example.entities.Student
-import com.example.entities.Vehicle
+import com.example.dtos.responses.*
+import com.example.entities.*
 
 fun Order.toDto() : OrderDto {
     return OrderDto(this.id, this.name)
@@ -22,4 +16,8 @@ fun Vehicle.toDto() : VehicleDto{
 
 fun Account.toDto(): AccountDto{
     return AccountDto(this.id, this.username, this.password, this.type)
+}
+
+fun DriverDetail.toDto(): DriverDetailDto{
+    return DriverDetailDto(this.id,this.routeId, this.driverId, this.vehicleId, this.startTime, this.endTime)
 }

@@ -6,7 +6,6 @@ import com.example.repositories.interfaces.IOrderRepository
 
 class OrderService(private val orderRepository: IOrderRepository) : IOrderService {
 
-
     override suspend fun getAllOrders(command: GetAllOrdersCommand): List<Order> {
         return orderRepository.getAll()
     }

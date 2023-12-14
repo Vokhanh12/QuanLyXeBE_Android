@@ -1,6 +1,6 @@
 package com.example.commands
 
-import java.sql.Date
+import java.time.LocalDateTime
 
 // Command Oder
 data class CreateOrderCommand(val name : String)
@@ -37,14 +37,13 @@ class getIdRouteByNameCommand
 
 
 
+
 // command DriverDetails
 class GetAllDriverDetailsCommand
-data class CreateDriverDetailsCommand(
+data class CreateDriverDetailCommand(
     val routeId: String,
     val driverId: String,
     val vehicleId: String,
-    val startTime: Date,
-    val endTime: Date
+    val startTime: LocalDateTime,
+    val endTime: LocalDateTime
 )
-
-class GetVehicleNameByDriverDetailsIdCommand

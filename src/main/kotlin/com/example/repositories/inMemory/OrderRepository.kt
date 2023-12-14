@@ -9,6 +9,7 @@ import org.jetbrains.exposed.sql.transactions.transaction
 
 object Orders : IntIdTable() {
     val name = varchar("name", 255)
+
 }
 
 class OrderRepository : BaseRepository<Order>() , IOrderRepository {
@@ -18,7 +19,6 @@ class OrderRepository : BaseRepository<Order>() , IOrderRepository {
             Orders.selectAll().map { rowToOrder(it) }
         }
     }
-
 
     override suspend fun findById(id: String): Order? {
         return transaction {
@@ -41,7 +41,6 @@ class OrderRepository : BaseRepository<Order>() , IOrderRepository {
             Orders.deleteWhere { Orders.id eq id.toInt() }
         }
     }
-
 
     private fun rowToOrder(row: ResultRow): Order {
         return Order(row[Orders.id].value.toString()).apply {
