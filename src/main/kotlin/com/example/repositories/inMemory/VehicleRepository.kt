@@ -22,12 +22,12 @@ object Vehicles: StringIdTable(){
 
 class VehicleRepository() : BaseRepository<Vehicle>(), IVehicleRepository{
 
+    // Base handle
     override suspend fun getAll(): List<Vehicle> {
         return transaction {
             Vehicles.selectAll().map { rowToVehicle(it)}
         }
     }
-
     override suspend fun insert(entity: Vehicle) {
         transaction {
             val id = Vehicles
@@ -41,7 +41,6 @@ class VehicleRepository() : BaseRepository<Vehicle>(), IVehicleRepository{
                 }
         }
     }
-
     override suspend fun delete(id: String) {
         transaction {
             Vehicles.deleteWhere { Vehicles.id eq id }
@@ -52,6 +51,18 @@ class VehicleRepository() : BaseRepository<Vehicle>(), IVehicleRepository{
             Vehicles.select { Vehicles.id eq id }.singleOrNull()?.let { rowToVehicle(it) }
         }
     }
+
+    // Advance handle
+
+    suspend fun getAllByType(type : String): List<Vehicle>{
+
+        return transaction {
+            Vehicles.select{ Vehicles.type eq type }.map { rowToVehicle(it) }
+        }
+
+    }
+
+
 
     private fun rowToVehicle(row: ResultRow): Vehicle{
         return Vehicle(row[Vehicles.id].value).apply {

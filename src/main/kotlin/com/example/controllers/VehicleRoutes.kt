@@ -1,9 +1,6 @@
 package com.example.controllers
 
-import com.example.commands.CreateVehicleCommand
-import com.example.commands.DeleteVehicleCommand
-import com.example.commands.GetAllVehicleCommand
-import com.example.commands.GetVehicleByIdCommand
+import com.example.commands.*
 import com.example.dtos.extensions.toDto
 import com.example.dtos.requests.CreateVehicleDto
 import com.example.repositories.inMemory.VehicleRepository
@@ -44,6 +41,23 @@ fun Route.addVehicleRoutes(){
                 call.respond(HttpStatusCode.NotFound)
 
             val vehicleDto = vehicle!!.toDto()
+            call.respond(vehicleDto)
+
+        }
+
+        get{
+
+            val type = call.parameters["type"]
+
+            if(type == null)
+                call.respond(HttpStatusCode.BadRequest)
+
+            val command = GetAllVehicleByTypeCommand(type!!)
+
+            val vehicles = vehicleService.getAllVehicleByType(command)
+
+            val vehicleDto = vehicles.map { it.toDto() }
+
             call.respond(vehicleDto)
 
         }

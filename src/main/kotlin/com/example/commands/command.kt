@@ -15,6 +15,7 @@ class GetAllStudentCommand
 
 // Command Vehicle
 class GetAllVehicleCommand
+data class GetAllVehicleByTypeCommand(val vehicleType: String)
 data class CreateVehicleCommand(
     val id: String,
     val name: String,
