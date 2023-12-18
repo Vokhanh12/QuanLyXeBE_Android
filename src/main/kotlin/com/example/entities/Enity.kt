@@ -1,5 +1,7 @@
 package com.example.entities
 
+import java.math.BigDecimal
+
 abstract class Entity(var id: String)
 
 class Order(id: String) : Entity(id) {
@@ -28,8 +30,14 @@ class Account(id: String): Entity(id){
 
 class Driver(id: String): Entity(id){
     var name: String = ""
-    var number_phone = ""
+    var numberPhone = ""
     var address = ""
+}
+
+class Location(id: String): Entity(id){
+    var name: String = ""
+    var latitude: BigDecimal? = null
+    var longitude: BigDecimal? = null
 }
 
 

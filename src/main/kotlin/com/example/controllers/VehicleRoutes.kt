@@ -19,12 +19,6 @@ fun Route.addVehicleRoutes(){
 
 
     route("api/v1/vehicles") {
-        get {
-            val command = GetAllVehicleCommand()
-            val vehicles = vehicleService.getAllVehicles(command)
-            val vehicleDto = vehicles.map { it.toDto() }
-            call.respond(vehicleDto)
-        }
 
         get("{id}"){
 
@@ -49,16 +43,28 @@ fun Route.addVehicleRoutes(){
 
             val type = call.parameters["type"]
 
-            if(type == null)
-                call.respond(HttpStatusCode.BadRequest)
+            when{
 
-            val command = GetAllVehicleByTypeCommand(type!!)
+                type != null -> {
+                    val command = GetAllVehicleByTypeCommand(type!!)
 
-            val vehicles = vehicleService.getAllVehicleByType(command)
+                    val vehicles = vehicleService.getAllVehicleByType(command)
 
-            val vehicleDto = vehicles.map { it.toDto() }
+                    val vehicleDto = vehicles.map { it.toDto() }
 
-            call.respond(vehicleDto)
+                    call.respond(vehicleDto)
+                }
+
+                else -> {
+                    val command = GetAllVehicleCommand()
+                    val vehicles = vehicleService.getAllVehicles(command)
+                    val vehicleDto = vehicles.map { it.toDto() }
+                    call.respond(vehicleDto)
+                }
+
+            }
+
+
 
         }
 
@@ -118,7 +124,6 @@ fun Route.addVehicleRoutes(){
             }
         }
 
-
         delete("{id}") {
             val id = call.parameters["id"]
 
@@ -138,7 +143,6 @@ fun Route.addVehicleRoutes(){
             call.respond(HttpStatusCode.NoContent)
 
         }
-
 
     }
 

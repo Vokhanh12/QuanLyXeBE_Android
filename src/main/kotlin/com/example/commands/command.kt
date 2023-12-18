@@ -1,19 +1,23 @@
 package com.example.commands
 
+import java.math.BigDecimal
 import java.time.LocalDateTime
 
-// Command Oder
+
+//region Order Commands
 data class CreateOrderCommand(val name : String)
 data class DeleteOrderCommand (val orderId : String)
 class GetAllOrdersCommand
 data class GetOrderByIdCommand(val orderId : String)
 data class UpdateOrderCommand (val orderId : String, val name : String)
+//endregion
 
-
+//region Student Commands
 // Command Student
 class GetAllStudentCommand
+//endregion
 
-// Command Vehicle
+//region Vehicle Commands
 class GetAllVehicleCommand
 data class GetAllVehicleByTypeCommand(val vehicleType: String)
 data class CreateVehicleCommand(
@@ -26,20 +30,19 @@ data class CreateVehicleCommand(
 )
 data class GetVehicleByIdCommand(val vehicleId: String)
 data class DeleteVehicleCommand(val vehicleId: String)
+//endregions
 
-// command Account
+//region Account Commands
 data class GetAccountByUsernameAndPasswordCommand(val username: String, val password: String)
+//endregion
 
-// command Route
+//region Route Commands
 class getAllNameRouteCommand
-class getIdRouteByNameCommand
+class getIdRouteByNameCommandt
 
-// command RouteDetails
+//endregion
 
-
-
-
-// command DriverDetails
+//region Driver Commands
 class GetAllDriverDetailsCommand
 data class CreateDriverDetailCommand(
     val routeId: String,
@@ -48,3 +51,35 @@ data class CreateDriverDetailCommand(
     val startTime: LocalDateTime,
     val endTime: LocalDateTime
 )
+
+// command Driver
+data class CreateDriverCommand(
+    val name : String,
+    val numberPhone: String,
+    val address: String,
+)
+data class DeleteDriverCommand (val orderId : String)
+class GetAllDriversCommand
+data class GetDriverByIdCommand(val orderId : String)
+data class UpdateDriverCommand (
+    val name : String,
+    val numberPhone: String,
+    val address: String,
+)
+//endregion
+
+//region Location Commands
+data class CreateLocationCommand(
+    val name : String,
+    val latitde: BigDecimal,
+    val longitude: BigDecimal
+)
+data class DeleteLocationCommand (val locationId : String)
+class GetAllLocationsCommand
+data class GetLocationByIdCommand(val locationId : String)
+data class UpdateLocationCommand (
+    val name : String,
+    val latitde: BigDecimal,
+    val longitude: BigDecimal
+)
+//endregion

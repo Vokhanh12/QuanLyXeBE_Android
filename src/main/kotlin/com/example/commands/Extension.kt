@@ -5,7 +5,7 @@ import com.example.entities.Order
 import com.example.entities.Vehicle
 import java.util.*
 
-// Order
+//region Oder Extensions
 fun CreateOrderCommand.toEntity() : Order {
 
     val uniqueID = UUID.randomUUID().toString()
@@ -16,6 +16,7 @@ fun CreateOrderCommand.toEntity() : Order {
     return order
 }
 
+
 fun UpdateOrderCommand.updateEntity(order: Order) : Order {
 
     order.name = this.name
@@ -23,8 +24,9 @@ fun UpdateOrderCommand.updateEntity(order: Order) : Order {
     return order
 }
 
-// Vehicle
+//endregion
 
+//region Vehicle Extensions
 fun CreateVehicleCommand.toEntity(): Vehicle {
     val vehicle = Vehicle(this.id) // Sử dụng id đã có thay vì tạo mới UUID
 
@@ -35,8 +37,9 @@ fun CreateVehicleCommand.toEntity(): Vehicle {
 
     return vehicle
 }
+//endregion
 
-// DriverDetail
+//region DriverDetail Extensions
 fun CreateDriverDetailCommand.toEnity(): DriverDetail{
     val uniqueID = UUID.randomUUID().toString()
     val driverDetail = DriverDetail(uniqueID, this.routeId, this.driverId, this.vehicleId)
@@ -46,3 +49,4 @@ fun CreateDriverDetailCommand.toEnity(): DriverDetail{
 
     return  driverDetail
 }
+//endregion

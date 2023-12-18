@@ -1,10 +1,11 @@
 package com.example.repositories.interfaces
 
-import com.example.entities.Account
-import com.example.entities.Order
-import com.example.entities.Student
-import com.example.entities.Vehicle
+import com.example.entities.*
 
+// Interface origin
+interface ILoginRepository<TEntity>{
+    suspend fun getTypeByUsernameAndPassword(username: String, password: String): String?
+}
 interface IEntityRepository<TEntity>{
     suspend fun getAll() : List<TEntity>
     suspend fun findById(id: String) : TEntity?
@@ -15,10 +16,11 @@ interface IEntityRepository<TEntity>{
 
 }
 
-interface ILoginRepository<TEntity>{
-    suspend fun getTypeByUsernameAndPassword(username: String, password: String): String?
-}
+// Interface used to extend by Interface origin
+
 interface IOrderRepository: IEntityRepository<Order>
 interface IStudentRepository: IEntityRepository<Student>
 interface IVehicleRepository: IEntityRepository<Vehicle>
 interface IAccountRepository: ILoginRepository<Account>
+interface ILocationRepository: IEntityRepository<Location>
+interface IDriverRepository: IEntityRepository<Driver>
