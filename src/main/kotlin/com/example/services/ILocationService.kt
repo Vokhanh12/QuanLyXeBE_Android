@@ -1,6 +1,6 @@
 package com.example.services
 
-import com.example.entities.Driver
+import com.example.commands.*
 import com.example.entities.Location
 
 interface ILocationService {

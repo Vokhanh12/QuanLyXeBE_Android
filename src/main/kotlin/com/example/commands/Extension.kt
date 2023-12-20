@@ -39,6 +39,9 @@ fun CreateVehicleCommand.toEntity(): Vehicle {
 }
 //endregion
 
+
+
+
 //region DriverDetail Extensions
 fun CreateDriverDetailCommand.toEnity(): DriverDetail{
     val uniqueID = UUID.randomUUID().toString()
