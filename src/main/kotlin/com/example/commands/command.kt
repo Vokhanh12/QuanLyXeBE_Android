@@ -83,3 +83,23 @@ data class UpdateLocationCommand (
     val longitude: BigDecimal
 )
 //endregion
+
+//region RoutesVehicle Command
+data class CreateRouteVehicleCommand(
+    val name : String,
+    val length: BigDecimal,
+    val note: String
+)
+data class DeleteRouteVehicleCommand (val routeVehicleId: String)
+class GetAllRoutesVehicleCommand
+data class GetRouteVehicleByIdCommand(val routeVehicleId : String)
+data class UpdateRouteVehicleCommand (
+    val name : String,
+    val length: BigDecimal,
+    val note: String
+)
+
+class GetNextIdCommand
+
+//endregion
+

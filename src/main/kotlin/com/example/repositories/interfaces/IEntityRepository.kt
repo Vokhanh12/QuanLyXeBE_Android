@@ -24,3 +24,6 @@ interface IVehicleRepository: IEntityRepository<Vehicle>
 interface IAccountRepository: ILoginRepository<Account>
 interface ILocationRepository: IEntityRepository<Location>
 interface IDriverRepository: IEntityRepository<Driver>
+interface IRouteVehicleRepository: IEntityRepository<RouteVehicle>{
+    suspend fun getNextId(): String
+}

@@ -40,4 +40,10 @@ class Location(id: String): Entity(id){
     var longitude: BigDecimal? = null
 }
 
+class RouteVehicle(id: String): Entity(id){
+    var name: String = ""
+    var length: BigDecimal? = null
+    var note: String = ""
+}
+
 
