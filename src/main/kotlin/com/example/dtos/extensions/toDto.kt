@@ -21,3 +21,7 @@ fun Account.toDto(): AccountDto{
 fun DriverDetail.toDto(): DriverDetailDto{
     return DriverDetailDto(this.id,this.routeId, this.driverId, this.vehicleId, this.startTime, this.endTime)
 }
+
+fun Location.toDto(): LocationDto{
+    return LocationDto(this.id,this.name, this.latitude,this.longitude)
+}

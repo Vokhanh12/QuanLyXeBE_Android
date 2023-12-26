@@ -18,6 +18,7 @@ fun Application.configureSerialization() {
     }
     routing {
 
+        addLocationRoutes()
         addRouteVehicleRoutes()
         addDriverDetailRoute()
         addUploadImageRoutes()

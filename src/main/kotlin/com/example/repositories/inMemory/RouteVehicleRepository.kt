@@ -16,7 +16,7 @@ object Routes: StringIdTable() {
 
 }
 
-class RoutesVehicleRepository: BaseRepository<RouteVehicle>(), IRouteVehicleRepository {
+class RouteVehicleRepository: BaseRepository<RouteVehicle>(), IRouteVehicleRepository {
     override suspend fun getNextId(): String {
         val nextId = transaction {
             SchemaUtils.create(Routes)
